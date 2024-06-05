@@ -1,17 +1,29 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
-import { addToBookshelf } from '../redux/slice/bookshelf'
 import { Book } from '../types'
+import { KEY_ACCESS_TOKEN, getItem, setItem } from '../Utils/localStorageManage'
+import { useBooks } from '../context/Books'
+import { keyBy } from 'lodash'
 
 interface BooksItemsProps{
-    item:Book
+    item:Book,
+    savedBooks?:Book[]
 }
 
 
-const BookItem:React.FC<BooksItemsProps> = ({item}) => {
-    const dispatch = useAppDispatch()
-    const bookshelf = useAppSelector(state => state.booksHelf.bookshelf)
-    const exists = bookshelf.some(book => book.key === item.key)
+const BookItem:React.FC<BooksItemsProps> = ({item,savedBooks}) => {
+  const {handleAddToDo} = useBooks()
+    const exists = savedBooks?.some(book => book.key === item.key)
+
+    const BookAddToLocalStorage = (item:Book) =>{
+       let book = {
+         key:item.key,
+         title:item.title,
+         edition_count:item.edition_count
+       }
+
+       handleAddToDo(book)
+    }
+   
     
   return (
     <div  className=' border-2 border-slate-600 shadow-md rounded-lg  p-2 w-full  '>
@@ -20,7 +32,7 @@ const BookItem:React.FC<BooksItemsProps> = ({item}) => {
             <p className='text-base text-black  text-balance'> {item.title}</p>
             </div>
             <p className='my-4'><span className='text-lg font-semibold text-black'>Edition Count</span> : {item.edition_count}</p>
-            <button onClick={() => dispatch(addToBookshelf(item))}   className='text-sm py-1 px-3 rounded-lg bg-green-600 text-white font-medium cursor-pointer block mx-auto'>{exists ? "remove from the Bookshelf": "Add to Bookshelf" }</button>
+            <button onClick={() =>BookAddToLocalStorage(item)}   className='text-sm py-1 px-3 rounded-lg bg-green-600 text-white font-medium cursor-pointer block mx-auto'>{exists ? "remove from the Bookshelf": "Add to Bookshelf" }</button>
         </div>
   )
 }

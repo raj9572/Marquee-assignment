@@ -2,13 +2,16 @@ import React, { useCallback, useEffect, useState } from 'react'
 import BookItem from '../components/BookItem'
 import { Book } from '../types'
 import debounce from 'lodash/debounce';
+import { KEY_ACCESS_TOKEN, getItem } from '../Utils/localStorageManage';
+import { useBooks } from '../context/Books';
 
 const Home = () => {
   const [bookList, setBooksList] = useState<Book[]>([])
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("")
-
+  // const [savedBooks, setSavedBooks] = useState<Book[]>([])
+  const {books} = useBooks()
 
   
 
@@ -39,6 +42,16 @@ const Home = () => {
   []// Ensure the debounce function is created only once
 );
 
+
+
+
+// useEffect(() => {
+//   // Load the array from localStorage when the component mounts
+//   const savedBooks = getItem(KEY_ACCESS_TOKEN);
+//   if (savedBooks) {
+//     setSavedBooks(JSON.parse(savedBooks));
+//   }
+// }, []);
 
  
 
@@ -114,7 +127,7 @@ const Home = () => {
        <div className='my-5 mx-2'>
        <div className='container mx-auto grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-2  '>
         {
-            bookList?.map(book => <BookItem key={book.key} item = {book}/>)
+            bookList?.map(book => <BookItem key={book.key} item = {book} savedBooks={books}/>)
         }
          
         </div>
