@@ -26,7 +26,7 @@ export const BooksProvider = ({children}:BooksProviderProps) =>{
           
           return JSON.parse(newTodos) 
     } catch (error) {
-        console.log('error',error)
+        
     }
  })
 
@@ -34,7 +34,7 @@ export const BooksProvider = ({children}:BooksProviderProps) =>{
 
     const handleAddToDo = (book:Book) =>{
         const exist = books?.some(item => item.key === book.key)
-        console.log(book,exist)
+       
         if(!exist){
             setBooks((prev) => {
                 const newBooks:Book[] =[
