@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# for setup the project and run the application
+  first you have to clone the code  the repository from the github.. after clone you have see folder Marquee-assignment in which the my-app folder is available
+  ## for  setup
+  1. go to my-app folder using cd my-app  
+  2. open the terminal and run command "npm install" for  install all the package in node modules
+  3. run command "npm start" for run the client
+  4. you will redirected to http://localhost:3000 where the client is running
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+# Features of the application
+1. when you will run the application you redirected to http://localhost:3000 which is home page where you see the beautiful navbar and real time show books which by fetch by openlibrary api
+2. when user search the book in input file then the books is fetch as result in real-time as the user types
+3. the user can add the book to his my Bookshelf where the books is store in localStorage for persistance
+4. when the user click on My Bookshelf button which is located the right side of the navbar .. then user redirect to mybookshelf page where he can see their added books
+5. user can remove and add the books in My Bookshelf page
+6. we used the tailwind for style and also used debouncing method for prevent from unnecessary api request
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+# Some important things
+1. the first commit code of the repository is setup on using the redux and redux-toolkit
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
