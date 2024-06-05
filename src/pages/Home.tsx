@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import BookItem from '../components/BookItem'
 import { Book } from '../types'
 import debounce from 'lodash/debounce';
-import { KEY_ACCESS_TOKEN, getItem } from '../Utils/localStorageManage';
 import { useBooks } from '../context/Books';
 
 const Home = () => {
